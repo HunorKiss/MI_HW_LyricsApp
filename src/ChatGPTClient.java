@@ -9,7 +9,7 @@ public class ChatGPTClient {
     public static String chatGPT(String prompt) throws URISyntaxException {
 
         String urlString  = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
+        String apiKey = "";
         String model = "gpt-3.5-turbo";
 
         try {
