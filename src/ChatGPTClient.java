@@ -3,13 +3,19 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Properties;
+import java.io.InputStream;
 
 public class ChatGPTClient {
 
-    public static String chatGPT(String prompt) throws URISyntaxException {
+    public static String chatGPT(String prompt) throws URISyntaxException, IOException {
+
+        InputStream input = ChatGPTClient.class.getClassLoader().getResourceAsStream("config.properties");
+        Properties prop = new Properties();
+        prop.load( input );
 
         String urlString  = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "";
+        String apiKey = prop.getProperty("API_KEY");
         String model = "gpt-3.5-turbo";
 
         try {
